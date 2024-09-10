@@ -28,6 +28,8 @@ usage() {
     echo "  latest                   Build an image with apache, php, phpmyadmin and mariadb server"
     echo "  mariadb                  Build an image with mariadb server only"
     echo "  web                      Build an image with apache and php only"
+    echo "  node                     Build an image with node only"
+    echo "  bun                      Build an image with bun only"
     echo ""
     exit 1
 }
@@ -63,15 +65,23 @@ fi
 case "$1" in
     latest)
         banner
-        docker buildx build -t cto/aio:latest -f ./Dockerfile .
+        docker buildx build -t cto4/aio:latest -f ./Dockerfile .
         ;;
     mariadb)
         banner
-        docker buildx build -t cto/aio:mariadb -f ./mariadb.Dockerfile .
+        docker buildx build -t cto4/aio:mariadb -f ./mariadb.Dockerfile .
         ;;
     web)
         banner
-        docker buildx build -t cto/aio:web -f ./web.Dockerfile .
+        docker buildx build -t cto4/aio:web -f ./web.Dockerfile .
+        ;;
+    node)
+        banner
+        docker buildx build -t cto4/aio:node -f ./node.Dockerfile .
+        ;;
+    bun)
+        banner
+        docker buildx build -t cto4/aio:bun -f ./bun.Dockerfile .
         ;;
     *)
         banner
